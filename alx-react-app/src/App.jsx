@@ -18,7 +18,8 @@ function App() {
     <MainContent />
     <WelcomeMessage/>     
 
-    <UserProfile name="John" age="45" bio="Loves coding and adventures" />
+    <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
+
 
       <div>
         <a href="https://vite.dev" target="_blank">
