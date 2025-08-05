@@ -6,7 +6,7 @@ const RecommendationsList = () => {
   const generateRecommendations = useRecipeStore((state) => state.generateRecommendations);
 
   useEffect(() => {
-    generateRecommendations();
+    generateRecommendations(); // Automatically generate recommendations on mount
   }, [generateRecommendations]);
 
   return (
