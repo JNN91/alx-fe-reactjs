@@ -46,12 +46,12 @@ export const useRecipeStore = create((set) => ({
     }),
 
   setSearchTerm: (term) =>
-    set((state) => ({
-      searchTerm: term,
-      filteredRecipes: state.recipes.filter((recipe) =>
+    set((state) => {
+      const filtered = state.recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(term.toLowerCase())
-      )
-    })),
+      );
+      return { searchTerm: term, filteredRecipes: filtered };
+    }),
 
   addFavorite: (recipeId) =>
     set((state) => ({
