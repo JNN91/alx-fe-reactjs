@@ -3,13 +3,26 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object({
   username: Yup.string().required("Username is required"),
-  email: Yup.string().email("Invalid email format").required("Email is required"),
-  password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });
 
 function FormikForm() {
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values, { resetForm, setErrors }) => {
     console.log("Formik values:", values);
+
+    if (!values.email) {
+      setErrors({ email: "Email is required" });
+      return;
+    }
+    if (!values.password) {
+      setErrors({ password: "Password is required" });
+      return;
+    }
 
     // Simulate API call
     fetch("https://jsonplaceholder.typicode.com/users", {
